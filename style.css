@@ -1,0 +1,369 @@
+/* =============================================
+   ACADEMIC DIGITAL ARCHIVE — style.css
+   Visual Polish: Typography, Spacing, Micro UX
+   ============================================= */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: url("bg_light.jpg") center/cover no-repeat fixed;
+  color: #1a2332;
+  line-height: 1.8;
+  transition: background 0.5s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.dark {
+  background: url("bg_dark.jpg") center/cover no-repeat fixed;
+  color: #dde3ed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(245, 247, 250, 0.88);
+  z-index: -1;
+  transition: background 0.5s ease;
+}
+
+body.dark::before {
+  background: rgba(10, 16, 30, 0.88);
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 24px;
+}
+
+/* ─── LOADER ───────────────────────────────── */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #f8f9fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.loader-line {
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #1a2332, transparent);
+  animation: loading 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes loading {
+  to { width: 100px; }
+}
+
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ─── NAVBAR ────────────────────────────────── */
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: rgba(248, 249, 251, 0.78);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: background 0.4s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+body.dark nav {
+  background: rgba(10, 16, 30, 0.78);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+nav.scrolled {
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.07);
+}
+
+/* FIX: navbar lebih tipis — padding dikurangi */
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 24px;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* FIX: logo lebih kecil */
+.logo-wrapper img {
+  width: 48px;
+  height: auto;
+  transition: opacity 0.3s ease;
+}
+
+.logo-wrapper span {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  opacity: 0.9;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu a {
+  text-decoration: none;
+  margin-left: 32px;
+  color: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+
+/* FIX: Home button — animasi underline aktif */
+.menu a:hover,
+.menu a.active {
+  opacity: 1;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 1.5px;
+  background: currentColor;
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu a:hover::after,
+.menu a.active::after {
+  width: 100%;
+}
+
+.theme-toggle {
+  margin-left: 32px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.06);
+  opacity: 1;
+}
+
+body.dark .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.theme-toggle img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.4s ease;
+}
+
+.theme-toggle:hover img {
+  transform: rotate(20deg);
+}
+
+/* ─── HERO ──────────────────────────────────── */
+.hero {
+  padding: 160px 24px 96px;
+  text-align: center;
+}
+
+/* FIX: Title 2 baris — "ARCHIVE" turun ke bawah */
+.hero h1 {
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1.15;
+  margin-bottom: 24px;
+  opacity: 0.92;
+}
+
+.hero-archive {
+  display: block;
+}
+
+.hero p {
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.9;
+  opacity: 0.55;
+}
+
+/* ─── DIVIDER ───────────────────────────────── */
+.divider {
+  width: 180px;
+  height: 2px;
+  background: currentColor;
+  margin: 0 auto 72px auto;
+  opacity: 0.18;
+}
+
+/* ─── ARSIP SECTION ─────────────────────────── */
+.arsip {
+  padding: 0 24px 80px;
+}
+
+/* FIX: "Arsip Akademik" di tengah */
+.arsip h2 {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+/* ─── CARD ──────────────────────────────────── */
+.card {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  padding: 36px 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+  margin-bottom: 100px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark .card {
+  background: rgba(17, 25, 42, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.09);
+}
+
+body.dark .card:hover {
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.35);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.card-header h3 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.card-header span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  padding: 4px 10px;
+  border: 1px solid currentColor;
+  border-radius: 100px;
+}
+
+.card > p {
+  font-size: 14px;
+  opacity: 0.6;
+  margin-bottom: 24px;
+  line-height: 1.75;
+}
+
+/* ─── BUTTON ─────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  background: #1a2332;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+body.dark .btn {
+  background: #dde3ed;
+  color: #1a2332;
+}
+
+.btn:hover {
+  opacity: 0.82;
+  transform: translateY(-1px);
+}
+
+/* ─── FOOTER ─────────────────────────────────── */
+/* FIX: footer lebih tipis */
+footer {
+  text-align: center;
+  padding: 20px 24px;
+  font-size: 12px;
+  opacity: 0.4;
+  letter-spacing: 0.02em;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(248, 249, 251, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+body.dark footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(10, 16, 30, 0.6);
+}
+
+/* ─── REVEAL ─────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 640px) {
+  .hero { padding: 120px 20px 72px; }
+  .card { padding: 28px 24px; }
+  .nav-inner { padding: 10px 20px; }
+  .menu a { margin-left: 18px; font-size: 13px; }
+  .theme-toggle { margin-left: 18px; }
+}
