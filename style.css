@@ -365,6 +365,7 @@ body.dark footer {
 
 /* ─── VIDEO EMBED PORTRAIT ──────────────────── */
 .video-wrapper {
+  position: relative;
   width: 100%;
   max-width: 320px;
   margin: 16px auto 0;
@@ -372,12 +373,20 @@ body.dark footer {
   overflow: hidden;
 }
 
-.video-wrapper iframe {
-  width: 100%;
-  aspect-ratio: 9 / 16;
-  height: auto;
-  border: none;
+/* ini kunci utama */
+.video-wrapper::before {
+  content: "";
   display: block;
+  padding-top: 177.77%; /* 9:16 ratio */
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 /* ─── RESPONSIVE ─────────────────────────────── */
@@ -388,12 +397,8 @@ body.dark footer {
   .menu a { margin-left: 18px; font-size: 13px; }
   .theme-toggle { margin-left: 18px; }
 
-  /* FIX: video full width di HP */
   .video-wrapper {
     max-width: 100%;
   }
-
-  .video-wrapper iframe {
-    height: 500px;
-  }
+ 
 }
