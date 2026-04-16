@@ -11,8 +11,14 @@
   scroll-behavior: smooth;
 }
 
+/* FIX iPhone scroll glitch */
+html, body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
 body {
-  background: url("bg_light.jpg") center/cover no-repeat fixed;
+  background: url("bg_light.jpg") center/cover no-repeat;
   color: #1a2332;
   line-height: 1.8;
   transition: background 0.5s ease, color 0.4s ease;
@@ -20,7 +26,7 @@ body {
 }
 
 body.dark {
-  background: url("bg_dark.jpg") center/cover no-repeat fixed;
+  background: url("bg_dark.jpg") center/cover no-repeat;
   color: #dde3ed;
 }
 
@@ -358,24 +364,20 @@ body.dark footer {
 }
 
 /* ─── VIDEO EMBED PORTRAIT ──────────────────── */
-/* FIX: center & full di mobile */
 .video-wrapper {
-  position: relative;
   width: 100%;
   max-width: 320px;
   margin: 16px auto 0;
   border-radius: 12px;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
 }
 
 .video-wrapper iframe {
-  display: block;
   width: 100%;
-  height: 568px;
+  aspect-ratio: 9 / 16;
+  height: auto;
   border: none;
-  border-radius: 12px;
+  display: block;
 }
 
 /* ─── RESPONSIVE ─────────────────────────────── */
