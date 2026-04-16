@@ -31,10 +31,14 @@ body::before {
   background: rgba(245, 247, 250, 0.88);
   z-index: -1;
   transition: background 0.5s ease;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 body.dark::before {
   background: rgba(10, 16, 30, 0.88);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .container {
@@ -94,7 +98,6 @@ nav.scrolled {
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.07);
 }
 
-
 .nav-inner {
   display: flex;
   justify-content: space-between;
@@ -107,7 +110,6 @@ nav.scrolled {
   align-items: center;
   gap: 10px;
 }
-
 
 .logo-wrapper img {
   width: 48px;
@@ -198,7 +200,6 @@ body.dark .theme-toggle:hover {
   text-align: center;
 }
 
-/* FIX: Title 2 baris — "ARCHIVE" turun ke bawah */
 .hero h1 {
   font-size: clamp(28px, 5vw, 52px);
   font-weight: 600;
@@ -234,7 +235,6 @@ body.dark .theme-toggle:hover {
   padding: 0 24px 80px;
 }
 
-/* FIX: "Arsip Akademik" di tengah */
 .arsip h2 {
   font-size: 11px;
   font-weight: 600;
@@ -329,7 +329,6 @@ body.dark .btn {
 }
 
 /* ─── FOOTER ─────────────────────────────────── */
-/* FIX: footer lebih tipis */
 footer {
   text-align: center;
   padding: 20px 24px;
@@ -359,29 +358,24 @@ body.dark footer {
 }
 
 /* ─── VIDEO EMBED PORTRAIT ──────────────────── */
+/* FIX: center & full di mobile */
 .video-wrapper {
   position: relative;
   width: 100%;
-  max-width: 360px;
+  max-width: 320px;
   margin: 16px auto 0;
-  padding-top: 0;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .video-wrapper iframe {
   display: block;
   width: 100%;
-  height: 640px;
+  height: 568px;
   border: none;
-  border-radius: 10px;
-}
-
-/* Responsive HP */
-@media (max-width: 640px) {
-  .video-wrapper iframe {
-    height: 480px;
-  }
+  border-radius: 12px;
 }
 
 /* ─── RESPONSIVE ─────────────────────────────── */
@@ -391,4 +385,13 @@ body.dark footer {
   .nav-inner { padding: 10px 20px; }
   .menu a { margin-left: 18px; font-size: 13px; }
   .theme-toggle { margin-left: 18px; }
+
+  /* FIX: video full width di HP */
+  .video-wrapper {
+    max-width: 100%;
+  }
+
+  .video-wrapper iframe {
+    height: 500px;
+  }
 }
