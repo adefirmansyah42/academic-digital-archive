@@ -15,11 +15,11 @@ const logo = document.getElementById("mainLogo");
 // Load saved theme
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
-  icon.src = "dark.png";
-  logo.src = "logo_dark.png";
-} else {
   icon.src = "light.png";
-  logo.src = "logo_light.png";
+  logo.src = "logo_light1.png";
+} else {
+  icon.src = "dark.png";
+  logo.src = "logo_light1.png";
 }
 
 // Reveal on scroll
@@ -59,10 +59,10 @@ toggle.addEventListener("click", () => {
   if (document.body.classList.contains("dark")) {
     localStorage.setItem("theme", "dark");
     icon.src = "light.png";
-    logo.src = "logo_light.png";
+    logo.src = "logo_light1.png";
   } else {
     localStorage.setItem("theme", "light");
     icon.src = "dark.png";
-    logo.src = "logo_dark.png";
+    logo.src = "logo_dark1.png";
   }
 });

@@ -94,7 +94,7 @@ nav.scrolled {
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.07);
 }
 
-/* FIX: navbar lebih tipis — padding dikurangi */
+
 .nav-inner {
   display: flex;
   justify-content: space-between;
@@ -108,7 +108,7 @@ nav.scrolled {
   gap: 10px;
 }
 
-/* FIX: logo lebih kecil */
+
 .logo-wrapper img {
   width: 48px;
   height: auto;
@@ -139,7 +139,6 @@ nav.scrolled {
   transition: opacity 0.2s ease;
 }
 
-/* FIX: Home button — animasi underline aktif */
 .menu a:hover,
 .menu a.active {
   opacity: 1;
@@ -255,7 +254,7 @@ body.dark .theme-toggle:hover {
   border-radius: 16px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
-  margin-bottom: 100px;
+  margin-bottom: 24px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -357,6 +356,25 @@ body.dark footer {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ─── VIDEO EMBED ───────────────────────────── */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* rasio 16:9 */
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 /* ─── RESPONSIVE ─────────────────────────────── */
